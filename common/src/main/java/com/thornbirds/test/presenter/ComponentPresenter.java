@@ -1,4 +1,4 @@
-package com.thornbirds.component.presenter;
+package com.thornbirds.test.presenter;
 
 import com.thornbirds.component.IEventController;
 import com.thornbirds.component.IEventObserver;

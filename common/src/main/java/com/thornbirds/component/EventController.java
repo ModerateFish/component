@@ -17,10 +17,12 @@ public abstract class EventController implements IEventController {
     private final Map<Integer, Set<IEventObserver>> mEventActionMap =
             new HashMap<Integer, Set<IEventObserver>>();
 
+    protected abstract void LogE(String msg);
+
     @Override
     public void registerObserverForEvent(int event, IEventObserver observer) {
         if (observer == null) {
-            // Log.e(TAG, "registerObserverForEvent but action is null for event=" + event);
+            LogE("registerObserverForEvent but action is null for event=" + event);
             return;
         }
         Set<IEventObserver> actionSet = mEventActionMap.get(event);
@@ -61,7 +63,7 @@ public abstract class EventController implements IEventController {
     public boolean postEvent(int event, Params params) {
         Set<IEventObserver> actionSet = mEventActionMap.get(event);
         if (actionSet == null || actionSet.isEmpty()) {
-            // Log.e(TAG, "no action registered for source " + event);
+            LogE("no action registered for source " + event);
             return false;
         }
         boolean result = false;

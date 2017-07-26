@@ -1,4 +1,4 @@
-package com.thornbirds.component.presenter;
+package com.thornbirds.test.presenter;
 
 /**
  * Basic interface of Component Presenter
@@ -14,6 +14,16 @@ public interface IComponentPresenter<VIEW> {
      * @param view target view
      */
     void setComponentView(VIEW view);
+
+    /**
+     * Start this Presenter
+     */
+    void startPresenter();
+
+    /**
+     * Stop this Presenter
+     */
+    void stopPresenter();
 
     /**
      * Called to let Presenter release resources

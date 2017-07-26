@@ -1,7 +1,7 @@
 package com.thornbirds.component;
 
-import com.thornbirds.component.presenter.IComponentPresenter;
-import com.thornbirds.component.view.IComponentView;
+import com.thornbirds.test.presenter.IComponentPresenter;
+import com.thornbirds.test.view.IComponentView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ import java.util.List;
  *
  * @author YangLi yanglijd@gmail.com
  */
-public abstract class CompoundView<VIEW, CONTROLLER extends EventController> {
+public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
 
-    protected VIEW mRootView;
+    protected VIEW mContentView;
 
     protected CONTROLLER mController;
 
@@ -31,9 +31,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends EventController> {
      * @param view      target view
      * @param presenter target presenter
      */
-    protected final void registerComponent(
-            IComponentView view,
-            IComponentPresenter presenter) {
+    protected final void registerComponent(IComponentView view, IComponentPresenter presenter) {
         view.setPresenter(presenter);
         presenter.setComponentView(view.getViewProxy());
         mPresenterSet.add(presenter);
@@ -52,14 +50,24 @@ public abstract class CompoundView<VIEW, CONTROLLER extends EventController> {
         mController = controller;
     }
 
-    public CompoundView(VIEW rootView) {
-        mRootView = rootView;
+    public CompoundView(CONTROLLER controller) {
+        mController = controller;
     }
 
     /**
-     * Setup all component for Compound View
+     * Setup all components for Compound View
      */
-    public abstract void setup();
+    public abstract void setupView();
+
+    /**
+     * Start all components for Compound View
+     */
+    public abstract void startView();
+
+    /**
+     * Stop all components for Compound View
+     */
+    public abstract void stopView();
 
     /**
      * Called to let Compound View release resources
