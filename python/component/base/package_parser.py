@@ -23,6 +23,12 @@ class PackageInfo(object):
         return ('project_path=%s module_path=%s src_path=%s sub_path=%s package_path=%s'
                 %(self.project_path, self.module_path, self.src_path, self.sub_path, self.package_path))
 
+    def get_class_package(self):
+        return self.package_path.replace('/', '.')
+
+    def get_class_path(self):
+        return os.path.join(self.module_path, self.src_path, self.sub_path, self.package_path.replace('.', '/'))
+
 def find_project_module_path(path, properties, mode = MODE_ALL):
     if not path or not path.strip():
         print "waring: input path is empty."
@@ -61,14 +67,25 @@ def find_package_info_from_path(path, module_path):
     return src_path, sub_path, package_path
 
 def find_package_path_from_project(module_path, src_path):
+    package = None
     manifest_path = os.path.join(module_path, src_path, 'AndroidManifest.xml')
-    if not os.path.exists(manifest_path):
-        print "waring: cannot found %s, package path cannot be inferred from this file." %(manifest_path)
-        return None
-    from lxml import etree
-    xml_file = etree.parse(manifest_path)
-    root_node = xml_file.getroot()
-    return root_node.attrib['package']
+    if os.path.exists(manifest_path):
+        from lxml import etree
+        xml_file = etree.parse(manifest_path)
+        root_node = xml_file.getroot()
+        package = root_node.attrib['package']
+    if not package:
+        split_path = module_path.strip('/ ').split('/')
+        print 'split_path is ' + str(split_path)
+        if split_path[-1] == 'app':
+            print "waring: cannot infer package_path from %s. use 'com.@project'" %(manifest_path)
+            return 'com.%s.component' %split_path[-2]
+        else:
+            print "waring: cannot infer package_path from %s. use 'com.@project.@module'" %(manifest_path)
+            return 'com.%s.%s.component' %(split_path[-1], split_path[-2])
+    else:
+        return package + '.component'
+    return None
 
 def parse_package_info(path, module_type, src_type, sub_type, package_type):
     if not path or not path.strip():
@@ -91,7 +108,7 @@ def parse_package_info(path, module_type, src_type, sub_type, package_type):
     # 推导src_path
     if not src_type:
         src_type = src_path if src_path else _DEFAULT_SRC_PATH
-    elif src_path:
+    elif src_path and src_type != src_path:
         result = raw_input("inferred src_path '%s' is different with specified one '%s', done you want to "
                        "use inferred one? y/n " %(src_path, src_type))
         if result == 'y':
@@ -99,7 +116,7 @@ def parse_package_info(path, module_type, src_type, sub_type, package_type):
     # 推导sub_path
     if not sub_type:
         sub_type = sub_path if sub_path else _DEFAULT_SUB_PATH
-    elif sub_path:
+    elif sub_path and sub_type != sub_path:
         result = raw_input("inferred sub_path '%s' is different with specified one '%s', done you want to "
                        "use inferred one? y/n " %(sub_path, sub_type))
         if result == 'y':
