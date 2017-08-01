@@ -1,7 +1,7 @@
 package com.thornbirds.component;
 
-import com.thornbirds.test.presenter.IComponentPresenter;
-import com.thornbirds.test.view.IComponentView;
+import com.thornbirds.component.presenter.IComponentPresenter;
+import com.thornbirds.component.view.IComponentView;
 
 import java.util.ArrayList;
 import java.util.List;

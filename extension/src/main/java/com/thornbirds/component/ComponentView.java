@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thornbirds.test.presenter.IComponentPresenter;
+import com.thornbirds.component.presenter.IComponentPresenter;
 
 /**
  * Created by yangli on 2017/5/21.

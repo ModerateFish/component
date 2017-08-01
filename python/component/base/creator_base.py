@@ -8,7 +8,7 @@ from command_parser import *
 from package_parser import *
 
 # 脚本名称
-command = sys.argv[0]
+command = os.path.basename(sys.argv[0])
 # 用户名
 user_name = getpass.getuser()
 # 日期

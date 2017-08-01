@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author YangLi yanglijd@gmail.com
  */
-public class Params {
+public class Params implements IParams {
     private List<Object> params;
 
     public Params() {

@@ -1,19 +1,13 @@
 package com.thornbirds.test;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.thornbirds.component.ComponentView;
-import com.thornbirds.component.CompoundView;
 import com.thornbirds.component.annotation.RegisterComponent;
-import com.thornbirds.test.presenter.IComponentPresenter;
-import com.thornbirds.test.presenter.TemplatePresenter;
-import com.thornbirds.test.view.TemplateView;
+import com.thornbirds.component.presenter.TemplatePresenter;
+import com.thornbirds.component.view.TemplateView;
 
 /**
  * Created by yangli on 2017/5/21.

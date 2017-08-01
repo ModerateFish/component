@@ -1,4 +1,4 @@
-package com.thornbirds.test.presenter;
+package com.thornbirds.component.presenter;
 
 import com.thornbirds.component.IEventController;
 import com.thornbirds.component.IEventObserver;
@@ -7,7 +7,7 @@ import com.thornbirds.component.IEventObserver;
  * This class defines Component Presenter in MVP Pattern, working with a CONTROLLER and a VIEW.
  * <p>
  * CONTROLLER is a subclass of {@link IEventController}, via which presenter can register observer
- * to receive event from other presenter or post event to notify other presenters something happened.
+ * to receive event from other presenter or post event to notify other presenters something happens.
  * <p>
  * VIEW is the view of this presenter.
  *
@@ -55,5 +55,17 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
 
     public ComponentPresenter(CONTROLLER eventController) {
         mEventController = eventController;
+    }
+
+    @Override
+    public void startPresenter() {
+    }
+
+    @Override
+    public void stopPresenter() {
+    }
+
+    @Override
+    public void destroy() {
     }
 }

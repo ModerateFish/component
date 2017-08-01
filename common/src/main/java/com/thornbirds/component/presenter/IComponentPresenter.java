@@ -1,4 +1,4 @@
-package com.thornbirds.test.presenter;
+package com.thornbirds.component.presenter;
 
 /**
  * Basic interface of Component Presenter

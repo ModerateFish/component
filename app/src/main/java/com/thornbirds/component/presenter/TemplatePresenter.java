@@ -1,8 +1,8 @@
-package com.thornbirds.test.presenter;
+package com.thornbirds.component.presenter;
 
 import com.thornbirds.component.Params;
 import com.thornbirds.test.TestController;
-import com.thornbirds.test.view.TemplateView;
+import com.thornbirds.component.view.TemplateView;
 
 /**
  * Created by yangli on 2017/5/28.

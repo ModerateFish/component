@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.thornbirds.component.view.IComponentView;
+import com.thornbirds.component.view.IViewProxy;
+
 ${IMPORT}
 
 /**

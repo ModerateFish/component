@@ -13,5 +13,5 @@ public interface IEventObserver {
      * @param params parameters of the Event
      * @return true is observer precessed the event, false otherwise
      */
-    boolean onEvent(int event, Params params);
+    boolean onEvent(int event, IParams params);
 }

@@ -1,4 +1,4 @@
-package com.thornbirds.test.view;
+package com.thornbirds.component.view;
 
 /**
  * Basic interface for Orientation

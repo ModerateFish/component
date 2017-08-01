@@ -60,7 +60,7 @@ public abstract class EventController implements IEventController {
     }
 
     @Override
-    public boolean postEvent(int event, Params params) {
+    public boolean postEvent(int event, IParams params) {
         Set<IEventObserver> actionSet = mEventActionMap.get(event);
         if (actionSet == null || actionSet.isEmpty()) {
             LogE("no action registered for source " + event);

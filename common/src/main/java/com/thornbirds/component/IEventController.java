@@ -44,7 +44,7 @@ public interface IEventController {
      * @param params parameters of the Event
      * @return true if event if processed by at least on Observer, false otherwise
      */
-    boolean postEvent(int event, Params params);
+    boolean postEvent(int event, IParams params);
 
     /**
      * Called to let Event Controller release resources
