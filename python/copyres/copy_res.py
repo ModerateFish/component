@@ -3,79 +3,31 @@
 
 import sys
 
-from copy_entity import *
+from base.package_parser import *
+from copy_base import *
+from local_setting import *
+
+curr_exec_path = os.path.abspath('.')
+package_info = parse_package_info(
+    curr_exec_path, None, None, None, None)
+if not package_info:
+    print "error: parse package info failed, please run this script under an android studio project."
+    exit()
+else:
+    print "info: package info is: " + str(package_info)
+
+# 资源拷贝的目标路径
+dst_res_path = os.path.join(package_info.get_src_path(), 'res')
+if not os.path.exists(dst_res_path):
+    print "error: dst_res_path %s not exists" %dst_res_path
+    exit()
 
 # 获取类名
 count = len(sys.argv)
 if count <= 1:
-    print "error: bad argument, a component name is required!"
+    print "error: command argument is required!"
+    print process.__doc__
     exit()
 
-i = 1
-while i < count:
-    command = sys.argv[i]
-    i += 1
-    if command.lower() == "-h" or command.lower() == "--help":
-        print 'usage:'
-        print '-s [string source] [string source] ... (note: if use -S, a new empty line will be inserted before each item)'
-        print '-p [plurals source] [plurals source] ... (note: if use -P, a new empty line will be inserted before each item)'
-        print '-a [string-array source] [string-array source] ... (note: if use -A, a new empty line will be inserted before each item)'
-        print '-i [drawable source] [drawable source] ...(note: if use -I, items in xml drawable will be checked recursively)'
-        print '-D [dimen source] [dimen source] ...'
-        print '-L [layout source] [layout source] ...'
-    elif command.lower() == "-s":
-        copier = CopyValueRes(command == "-S", "strings", "string")
-        resList = []
-        while i < count:
-            item = sys.argv[i]
-            if item[0] == "-":
-                break
-            resList.append(item)
-            i += 1
-        print ""
-        copier.doCopy(resList)
-    elif command.lower() == "-p":
-        copier = CopyValueRes(command == "-P", "strings", "plurals")
-        resList = []
-        while i < count:
-            item = sys.argv[i]
-            if item[0] == "-":
-                break
-            resList.append(item)
-            i += 1
-        print ""
-        copier.doCopy(resList)
-    elif command.lower() == "-a":
-        copier = CopyValueRes(command == "-A", "arrays", "string-array")
-        resList = []
-        while i < count:
-            item = sys.argv[i]
-            if item[0] == "-":
-                break
-            resList.append(item)
-            i += 1
-        print ""
-        copier.doCopy(resList)
-    elif command.lower() == "-i":
-        copier = CopyDrawableRes(command == "-I")
-        resList = []
-        while i < count:
-            item = sys.argv[i]
-            if item[0] == "-":
-                break
-            resList.append(item)
-            i += 1
-        print ""
-        copier.doCopy(resList)
-    elif command.lower() == "-l":
-        copier = CopyLayoutRes()
-        resList = []
-        while i < count:
-           item = sys.argv[i]
-           if item[0] == "-":
-               break
-           resList.append(item)
-           i += 1
-        copier.doCopy(resList)
-    else:
-        print 'unknown command: ' + command + ', run -h or --help'
+print 'org_res_path=%s dst_res_path=%s' %(org_res_path, dst_res_path)
+process(sys.argv, count, org_res_path, dst_res_path)

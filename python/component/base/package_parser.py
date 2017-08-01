@@ -29,6 +29,9 @@ class PackageInfo(object):
     def get_class_path(self):
         return os.path.join(self.module_path, self.src_path, self.sub_path, self.package_path.replace('.', '/'))
 
+    def get_src_path(self):
+        return os.path.join(self.module_path, self.src_path)
+
 def find_project_module_path(path, properties, mode = MODE_ALL):
     if not path or not path.strip():
         print "waring: input path is empty."
@@ -76,7 +79,7 @@ def find_package_path_from_project(module_path, src_path):
         package = root_node.attrib['package']
     if not package:
         split_path = module_path.strip('/ ').split('/')
-        print 'split_path is ' + str(split_path)
+        print "split_path is " + str(split_path)
         if split_path[-1] == 'app':
             print "waring: cannot infer package_path from %s. use 'com.@project'" %(manifest_path)
             return 'com.%s.component' %split_path[-2]
