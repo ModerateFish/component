@@ -161,11 +161,11 @@ class CopyValueRes(CopyItemRes):
         dst_file = os.path.join(self.dst_res_path, res_path)
 
         if not os.path.exists(src_file):
-            print "waring: src_file %s not exits" %src_file
+            print "waring: src_file %s not exists" %src_file
             return
 
         if not os.path.exists(dst_file):
-            print "waring: dst_file %s not exits" %dst_file
+            print "waring: dst_file %s not exists" %dst_file
             return
 
         # 读取原始数据

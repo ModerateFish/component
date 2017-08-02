@@ -13,9 +13,9 @@ dependencies {
 }
 
 ext {
-    GROUP_ID = 'com.thornbirds'
+    GROUP_ID = rootProject.ext.mvnGroudID
     ARTIFACT_ID = 'component'
-    VERSION = '1.0.0'
+    VERSION = rootProject.ext.versionName
 }
 
 def siteUrl = 'https://github.com/ModerateFish/component'         // project homepage
@@ -93,24 +93,3 @@ uploadArchives {
         }
     }
 }
-
-////bintray upload
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
-//bintray {
-//    user = properties.getProperty("bintray.user")
-//    key = properties.getProperty("bintray.apikey")
-//    configurations = ['archives']
-//    pkg {
-//        repo = "maven"
-//        name = "component"                                        // project name in jcenter
-//        desc = 'A helpful library named Component.'
-//        websiteUrl = siteUrl
-//        vcsUrl = gitUrl
-//        issueTrackerUrl = issueUrl
-//        licenses = ["Apache-2.0"]
-//        labels = ['java']
-//        publish = true
-//        publicDownloadNumbers = true
-//    }
-//}
