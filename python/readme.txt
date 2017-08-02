@@ -8,4 +8,4 @@ python -m python_file [params]
 
 [示例]在watchclient模块下生成TestView和TestPresenter：
 cd ~/Development/huyu/livesdk/watchclient
-python -m create_component_view Test
+python -m create_view_with_presenter Test
