@@ -5,12 +5,12 @@ package com.thornbirds.component.view;
  *
  * @author YangLi yanglijd@gmail.com
  */
-public interface IViewProxy {
+public interface IViewProxy<VIEW> {
     /**
      * Returns the real view of the ViewProxy
      *
      * @param <T> type of real view
      * @return real view
      */
-    <T> T getRealView();
+    <T extends VIEW> T getRealView();
 }

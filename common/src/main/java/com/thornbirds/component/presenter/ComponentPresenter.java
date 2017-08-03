@@ -2,6 +2,7 @@ package com.thornbirds.component.presenter;
 
 import com.thornbirds.component.IEventController;
 import com.thornbirds.component.IEventObserver;
+import com.thornbirds.component.IParams;
 
 /**
  * This class defines Component Presenter in MVP Pattern, working with a CONTROLLER and a VIEW.
@@ -17,7 +18,7 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
         implements IEventObserver, IComponentPresenter<VIEW> {
     protected final String TAG = getTAG();
 
-    protected CONTROLLER mEventController;
+    protected CONTROLLER mController;
 
     protected VIEW mView;
 
@@ -27,7 +28,7 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
      * @param event the type of event
      */
     protected final void registerAction(int event) {
-        mEventController.registerObserverForEvent(event, this);
+        mController.registerObserverForEvent(event, this);
     }
 
     /**
@@ -36,14 +37,33 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
      * @param event the type of event
      */
     protected final void unregisterAction(int event) {
-        mEventController.unregisterObserverForEvent(event, this);
+        mController.unregisterObserverForEvent(event, this);
     }
 
     /**
      * Unregister this presenter from Event Controller to stop receiving Event of any type
      */
     protected final void unregisterAllAction() {
-        mEventController.unregisterObserver(this);
+        mController.unregisterObserver(this);
+    }
+
+    /**
+     * Post event to Event Controller
+     *
+     * @param event type of the Event to be post
+     */
+    protected final void postEvent(int event) {
+        mController.postEvent(event);
+    }
+
+    /**
+     * Post event to Event Controller with params
+     *
+     * @param event type of the Event to be post
+     * @param params parameters of the Event
+     */
+    protected final void postEvent(int event, IParams params) {
+        mController.postEvent(event, params);
     }
 
     protected abstract String getTAG();
@@ -53,8 +73,8 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
         mView = view;
     }
 
-    public ComponentPresenter(CONTROLLER eventController) {
-        mEventController = eventController;
+    public ComponentPresenter(CONTROLLER controller) {
+        mController = controller;
     }
 
     @Override

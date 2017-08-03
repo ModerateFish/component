@@ -40,7 +40,7 @@ public interface IEventController {
     /**
      * Post event to Event Controller
      *
-     * @param event type of the Event to be dispatched
+     * @param event  type of the Event to be dispatched
      * @param params parameters of the Event
      * @return true if event if processed by at least on Observer, false otherwise
      */

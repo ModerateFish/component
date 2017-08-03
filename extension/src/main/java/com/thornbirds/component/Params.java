@@ -22,10 +22,7 @@ public class Params implements IParams {
         return this;
     }
 
-    public <T extends Object> T firstItem() {
-        return getItem(0);
-    }
-
+    @Override
     public <T extends Object> T getItem(int index) {
         if (params == null || index >= params.size()) {
             return null;
