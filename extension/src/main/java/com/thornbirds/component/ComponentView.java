@@ -29,6 +29,17 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
         view.setOnClickListener(listener);
     }
 
+    /**
+     * Register Component which has presenter with a view, but not IEventView
+     *
+     * @param view      target view
+     * @param presenter target presenter
+     */
+    protected final void registerHybridComponent(IEventPresenter presenter, View view) {
+        presenter.setView(view);
+        mPresenterSet.add(presenter);
+    }
+
     protected abstract String getTAG();
 
     public ComponentView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
