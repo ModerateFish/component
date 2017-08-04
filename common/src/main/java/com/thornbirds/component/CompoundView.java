@@ -1,7 +1,7 @@
 package com.thornbirds.component;
 
-import com.thornbirds.component.presenter.IComponentPresenter;
-import com.thornbirds.component.view.IComponentView;
+import com.thornbirds.component.presenter.IEventPresenter;
+import com.thornbirds.component.view.IEventView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
 
     protected CONTROLLER mController;
 
-    protected final List<IComponentPresenter> mPresenterSet = new ArrayList<>();
+    protected final List<IEventPresenter> mPresenterSet = new ArrayList<>();
 
     /**
      * Register Component which has both view and presenter
@@ -31,8 +31,8 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
      * @param view      target view
      * @param presenter target presenter
      */
-    protected final void registerComponent(IComponentView view, IComponentPresenter presenter) {
-        presenter.setComponentView(view.getViewProxy());
+    protected final void registerComponent(IEventView view, IEventPresenter presenter) {
+        presenter.setView(view.getViewProxy());
         view.setPresenter(presenter);
         mPresenterSet.add(presenter);
     }
@@ -42,7 +42,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
      *
      * @param presenter target presenter
      */
-    protected final void registerComponent(IComponentPresenter presenter) {
+    protected final void registerComponent(IEventPresenter presenter) {
         mPresenterSet.add(presenter);
     }
 
@@ -62,15 +62,28 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
     /**
      * Start all components for Compound View
      */
-    public abstract void startView();
+    public void startView() {
+        for (IEventPresenter presenter : mPresenterSet) {
+            presenter.startPresenter();
+        }
+    }
 
     /**
      * Stop all components for Compound View
      */
-    public abstract void stopView();
+    public void stopView() {
+        for (IEventPresenter presenter : mPresenterSet) {
+            presenter.stopPresenter();
+        }
+    }
 
     /**
      * Called to let Compound View release resources
      */
-    public abstract void release();
+    public void release() {
+        for (IEventPresenter presenter : mPresenterSet) {
+            presenter.destroy();
+        }
+        mPresenterSet.clear();
+    }
 }

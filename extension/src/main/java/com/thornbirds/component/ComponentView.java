@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thornbirds.component.presenter.IComponentPresenter;
+import com.thornbirds.component.presenter.IEventPresenter;
 
 /**
  * Created by yangli on 2017/5/21.
@@ -34,27 +34,5 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
     public ComponentView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
         super(controller);
         mParentView = parentView;
-    }
-
-    @Override
-    public void startView() {
-        for (IComponentPresenter presenter : mPresenterSet) {
-            presenter.startPresenter();
-        }
-    }
-
-    @Override
-    public void stopView() {
-        for (IComponentPresenter presenter : mPresenterSet) {
-            presenter.stopPresenter();
-        }
-    }
-
-    @Override
-    public void release() {
-        for (IComponentPresenter presenter : mPresenterSet) {
-            presenter.destroy();
-        }
-        mPresenterSet.clear();
     }
 }

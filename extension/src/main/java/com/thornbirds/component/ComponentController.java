@@ -3,6 +3,8 @@ package com.thornbirds.component;
 import android.util.Log;
 
 /**
+ * Basic definition of Component Controller for Android platform.
+ *
  * Created by yangli on 2017/5/21.
  */
 public abstract class ComponentController extends EventController {

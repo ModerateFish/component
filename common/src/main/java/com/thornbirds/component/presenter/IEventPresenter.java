@@ -5,7 +5,7 @@ package com.thornbirds.component.presenter;
  *
  * @author YangLi yanglijd@gmail.com
  */
-public interface IComponentPresenter<VIEW> {
+public interface IEventPresenter<VIEW> {
     /**
      * Set View to Presenter
      * <p>
@@ -13,7 +13,7 @@ public interface IComponentPresenter<VIEW> {
      *
      * @param view target view
      */
-    void setComponentView(VIEW view);
+    void setView(VIEW view);
 
     /**
      * Start this Presenter

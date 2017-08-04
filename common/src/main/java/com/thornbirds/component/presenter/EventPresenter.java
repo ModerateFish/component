@@ -5,18 +5,18 @@ import com.thornbirds.component.IEventObserver;
 import com.thornbirds.component.IParams;
 
 /**
- * This class defines Component Presenter in MVP Pattern, working with a CONTROLLER and a VIEW.
+ * This class defines the Basic Component Presenter in MVP Pattern, working with a CONTROLLER and a
+ * VIEW.
  * <p>
  * CONTROLLER is a subclass of {@link IEventController}, via which presenter can register observer
  * to receive event from other presenter or post event to notify other presenters something happens.
  * <p>
- * VIEW is the view of this presenter.
+ * VIEW is the view of this presenter, via which presenter can interact with the real view.
  *
  * @author YangLi yanglijd@gmail.com
  */
-public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventController>
-        implements IEventObserver, IComponentPresenter<VIEW> {
-    protected final String TAG = getTAG();
+public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
+        implements IEventObserver, IEventPresenter<VIEW> {
 
     protected CONTROLLER mController;
 
@@ -66,26 +66,12 @@ public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventControll
         mController.postEvent(event, params);
     }
 
-    protected abstract String getTAG();
-
     @Override
-    public void setComponentView(VIEW view) {
+    public void setView(VIEW view) {
         mView = view;
     }
 
-    public ComponentPresenter(CONTROLLER controller) {
+    public EventPresenter(CONTROLLER controller) {
         mController = controller;
-    }
-
-    @Override
-    public void startPresenter() {
-    }
-
-    @Override
-    public void stopPresenter() {
-    }
-
-    @Override
-    public void destroy() {
     }
 }

@@ -1,18 +1,19 @@
 package com.thornbirds.component.view;
 
+import com.thornbirds.component.presenter.IEventPresenter;
+
 /**
  * This class defines basic interface of Component View in MVP Pattern, working with a PRESENTER
  * and a VIEW.
  * <p>
- * PRESENTER is a subclass of {@link com.thornbirds.component.presenter.IComponentPresenter}, and is
- * the Presenter of this Component View.
+ * PRESENTER is a subclass of {@link IEventPresenter}, and is the Presenter of this Component View.
  * <p>
- * VIEW is a subclass of {@link IViewProxy}, and defines a Proxy of this view. Usually, VIEW defines
- * a interface for the Presenter to interact with this view.
+ * VIEW is a Proxy of this Component View. Usually, VIEW defines a interface for the Presenter to
+ * interact with the real view.
  * <p>
  * @author YangLi yanglijd@gmail.com
  */
-public interface IComponentView<PRESENTER, VIEW extends IViewProxy> {
+public interface IEventView<PRESENTER, VIEW> {
     /**
      * Returns a proxy of the ComponentView
      * <p>
