@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Definition of Params which is used to pass parameters for Event Controller when dispatches a event
+ * Definition of Params which is used to pass parameters for Event Controller when dispatch event.
  *
  * @author YangLi yanglijd@gmail.com
  */

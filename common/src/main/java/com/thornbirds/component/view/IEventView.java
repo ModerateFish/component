@@ -15,19 +15,19 @@ import com.thornbirds.component.presenter.IEventPresenter;
  */
 public interface IEventView<PRESENTER, VIEW> {
     /**
-     * Returns a proxy of the ComponentView
+     * Returns a proxy of the ComponentView.
      * <p>
-     * Note that VIEW defines the interface a ComponentView should implement when
-     * interacting with its Presenter
+     * Note that VIEW defines the interface a ComponentView should implement when interacting with
+     * its Presenter.
      *
      * @return view proxy
      */
     VIEW getViewProxy();
 
     /**
-     * Set Presenter to this ComponentView
+     * Set Presenter to this ComponentView.
      * <p>
-     * Note that the Presenter maybe null if view does not need a Presenter
+     * Note that the Presenter maybe null if view does not need a Presenter.
      *
      * @param presenter Presenter
      */

@@ -1,13 +1,13 @@
 package com.thornbirds.component;
 
 /**
- * Basic interface of Event Observer
+ * Basic interface of Event Observer.
  *
  * @author YangLi yanglijd@gmail.com
  */
 public interface IEventObserver {
     /**
-     * Event Controller calls this to notify the Observer an event arrives
+     * Event Controller calls this to notify the Observer an event arrives.
      *
      * @param event  type of the Event
      * @param params parameters of the Event

@@ -23,7 +23,7 @@ public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
     protected VIEW mView;
 
     /**
-     * Register this Presenter to Event Controller to receive Event of certain type
+     * Register this Presenter to Event Controller to receive Event of certain type.
      *
      * @param event the type of event
      */
@@ -32,7 +32,7 @@ public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
     }
 
     /**
-     * Unregister this Presenter from Event Controller to stop receiving Event of certain type
+     * Unregister this Presenter from Event Controller to stop receiving Event of certain type.
      *
      * @param event the type of event
      */
@@ -41,14 +41,14 @@ public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
     }
 
     /**
-     * Unregister this presenter from Event Controller to stop receiving Event of any type
+     * Unregister this presenter from Event Controller to stop receiving Event of any type.
      */
     protected final void unregisterAllAction() {
         mController.unregisterObserver(this);
     }
 
     /**
-     * Post event to Event Controller
+     * Post event to Event Controller.
      *
      * @param event type of the Event to be post
      */
@@ -57,7 +57,7 @@ public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
     }
 
     /**
-     * Post event to Event Controller with params
+     * Post event to Event Controller with params.
      *
      * @param event type of the Event to be post
      * @param params parameters of the Event

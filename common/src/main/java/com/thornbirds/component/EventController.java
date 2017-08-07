@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Basic definition of Event Controller
+ * Basic definition of Event Controller.
  *
  * @author YangLi yanglijd@gmail.com
  */

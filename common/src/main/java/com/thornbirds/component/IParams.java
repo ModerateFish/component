@@ -1,13 +1,13 @@
 package com.thornbirds.component;
 
 /**
- * Basic interface of Params
+ * Basic interface of Params.
  *
  * @author YangLi yanglijd@gmail.com
  */
 public interface IParams {
     /**
-     * fetch item at index
+     * Fetch item at index.
      *
      * @param index index of item
      * @param <T>   item type

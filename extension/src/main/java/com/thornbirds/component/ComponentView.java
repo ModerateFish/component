@@ -30,7 +30,7 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
     }
 
     /**
-     * Register Component which has presenter with a view, but not IEventView
+     * Register Component which has presenter with a view, but not IEventView.
      *
      * @param view      target view
      * @param presenter target presenter

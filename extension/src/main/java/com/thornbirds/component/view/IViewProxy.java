@@ -9,7 +9,7 @@ import android.view.View;
  */
 public interface IViewProxy {
     /**
-     * Returns the real view of the ViewProxy
+     * Returns the real view of the ViewProxy.
      *
      * @param <T> type of real view
      * @return real view

@@ -38,7 +38,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
     }
 
     /**
-     * Register Component which has only presenter
+     * Register Component which has only presenter.
      *
      * @param presenter target presenter
      */
@@ -55,12 +55,12 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
     }
 
     /**
-     * Setup all components for Compound View
+     * Setup all components for Compound View.
      */
     public abstract void setupView();
 
     /**
-     * Start all components for Compound View
+     * Start all components for Compound View.
      */
     public void startView() {
         for (IEventPresenter presenter : mPresenterSet) {
@@ -69,7 +69,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
     }
 
     /**
-     * Stop all components for Compound View
+     * Stop all components for Compound View.
      */
     public void stopView() {
         for (IEventPresenter presenter : mPresenterSet) {
@@ -78,7 +78,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
     }
 
     /**
-     * Called to let Compound View release resources
+     * Called to let Compound View release resources.
      */
     public void release() {
         for (IEventPresenter presenter : mPresenterSet) {

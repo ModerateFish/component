@@ -7,7 +7,7 @@ package com.thornbirds.component.presenter;
  */
 public interface IEventPresenter<VIEW> {
     /**
-     * Set View to Presenter
+     * Set View to Presenter.
      * <p>
      * Note that the view maybe null if presenter does not need a view
      *
@@ -16,17 +16,17 @@ public interface IEventPresenter<VIEW> {
     void setView(VIEW view);
 
     /**
-     * Start this Presenter
+     * Start this Presenter.
      */
     void startPresenter();
 
     /**
-     * Stop this Presenter
+     * Stop this Presenter.
      */
     void stopPresenter();
 
     /**
-     * Called to let Presenter release resources
+     * Called to let Presenter release resources.
      */
     void destroy();
 }
