@@ -1,7 +1,7 @@
 为了能在任意目录下使用本python包下的Python脚本
 
 打开终端，切换本目录，运行如下命令即可：
-sh setup_python.sh
+python setup_python_script_env
 
 然后，切换到目标路径，使用如下命令运行Python脚本即可：
 python -m python_file [params]
