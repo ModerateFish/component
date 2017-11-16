@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * Created by yangli on 2017/9/16.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class ComponentActivity extends AppCompatActivity {
     protected final String TAG = getTAG();
 
     protected final <V extends View> V $(int id) {

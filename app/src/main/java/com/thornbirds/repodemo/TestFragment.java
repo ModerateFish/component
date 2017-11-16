@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thornbirds.framework.fragment.BaseFragment;
+import com.thornbirds.framework.fragment.ComponentFragment;
 
 /**
  * Created by yangli on 2017/9/7.
  */
-public class TestFragment extends BaseFragment {
+public class TestFragment extends ComponentFragment {
 
     public static final String EXTRA_FRAGMENT_ID = "extra_fragment_id";
 

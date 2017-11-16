@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * Created by yangli on 2017/9/7.
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class ComponentFragment extends Fragment {
     protected final String TAG = getTAG();
 
     protected abstract String getTAG();
