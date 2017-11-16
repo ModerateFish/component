@@ -20,7 +20,7 @@ public class ${NAME1} extends ControllerView<RelativeLayout, ${NAME2}> {
     private static final String TAG = "${NAME1}";
 
     @Override
-    protected String getTAG() {
+    protected final String getTAG() {
         return TAG;
     }
 

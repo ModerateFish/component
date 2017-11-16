@@ -19,7 +19,7 @@ public class ${NAME1} extends ComponentPresenter<${NAME2}> {
     private static final String TAG = "${NAME1}";
 
 	@Override
-	protected String getTAG() {
+	protected final String getTAG() {
 		return TAG;
 	}
 

@@ -21,7 +21,7 @@ public class ${NAME1} extends ComponentPresenter<${NAME2}.IView>
     private static final String TAG = "${NAME1}";
 
     @Override
-    protected String getTAG() {
+    protected final String getTAG() {
         return TAG;
     }
 

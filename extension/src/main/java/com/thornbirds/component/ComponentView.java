@@ -21,13 +21,7 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
         return (T) mContentView.findViewById(resId);
     }
 
-    protected final <T extends View> T $(@NonNull View view, @IdRes int resId) {
-        return (T) view.findViewById(resId);
-    }
-
-    protected final void $click(@NonNull View view, View.OnClickListener listener) {
-        view.setOnClickListener(listener);
-    }
+    protected abstract String getTAG();
 
     /**
      * Register Component which has presenter with a view, but not IEventView.
@@ -39,8 +33,6 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
         presenter.setView(view);
         mPresenterSet.add(presenter);
     }
-
-    protected abstract String getTAG();
 
     public ComponentView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
         super(controller);

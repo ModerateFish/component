@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
-public @interface RegisterComponent {
+@interface RegisterComponent {
     String name();
     boolean viewOn() default true;
     boolean presenterOn() default true;

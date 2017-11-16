@@ -26,12 +26,6 @@ public class ${NAME1} implements IComponentView<${NAME1}.IPresenter, ${NAME1}.IV
 		return (T) findViewById(resId);
 	}
 
-	protected final void $click(View view, View.OnClickListener listener) {
-		if (view != null) {
-			view.setOnClickListener(listener);
-		}
-	}
-
 	@Override
 	public void setPresenter(@Nullable IPresenter iPresenter) {
 		mPresenter = iPresenter;

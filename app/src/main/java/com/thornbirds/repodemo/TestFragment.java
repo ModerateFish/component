@@ -20,13 +20,8 @@ public class TestFragment extends BaseFragment {
     private int mId = 0;
 
     @Override
-    protected String getTAG() {
+    protected final String getTAG() {
         return "TestFragment";
-    }
-
-    @Override
-    protected int getLayoutResId() {
-        return R.layout.fragment_test;
     }
 
     @Override
@@ -51,12 +46,11 @@ public class TestFragment extends BaseFragment {
         Log.d(TAG, "onCreate fragment " + mId + ", hashCode=" + hashCode());
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView fragment " + mId + ", hashCode=" + hashCode());
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.fragment_test, container, false);
     }
 
     @Override

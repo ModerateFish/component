@@ -59,7 +59,7 @@ public abstract class EventPresenter<VIEW, CONTROLLER extends IEventController>
     /**
      * Post event to Event Controller with params.
      *
-     * @param event type of the Event to be post
+     * @param event  type of the Event to be post
      * @param params parameters of the Event
      */
     protected final void postEvent(int event, IParams params) {

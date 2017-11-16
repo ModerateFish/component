@@ -13,7 +13,7 @@ import javax.tools.Diagnostic;
 /**
  * Created by yangli on 2017/5/29.
  */
-public class ComponentProcessor extends AbstractProcessor {
+class ComponentProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {

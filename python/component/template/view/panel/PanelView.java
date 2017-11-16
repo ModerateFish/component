@@ -26,23 +26,17 @@ public class ${NAME1} extends BaseBottomPanel<LinearLayout, RelativeLayout>
 	@Nullable
 	protected IPresenter mPresenter;
 
-	protected final void $click(View view, View.OnClickListener listener) {
-		if (view != null) {
-			view.setOnClickListener(listener);
-		}
-	}
-
 	@Override
 	public void onClick(View v) {
 	}
 
 	@Override
-	protected int getLayoutResId() {
+	protected final int getLayoutResId() {
 		return 0; // [TODO-COMPONENT replace to correct LayoutRes]
 	}
 
 	@Override
-	public void setPresenter(@Nullable IPresenter iPresenter) {
+	public final void setPresenter(@Nullable IPresenter iPresenter) {
 		mPresenter = iPresenter;
 	}
 
