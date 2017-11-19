@@ -18,11 +18,10 @@ ${IMPORT}
  */
 public class ${NAME1} extends ComponentPresenter<${NAME2}.IView>
 		implements ${NAME2}.IPresenter {
-    private static final String TAG = "${NAME1}";
 
 	@Override
 	protected final String getTAG() {
-		return TAG;
+		return "${NAME1}";
 	}
 
 	public ${NAME1}(@NonNull IEventController controller) {
@@ -30,7 +29,7 @@ public class ${NAME1} extends ComponentPresenter<${NAME2}.IView>
 	}
 
 	@Override
-	public boolean onEvent(int event, IParams params) {
+	public final boolean onEvent(int event, IParams params) {
 		if (mView == null) {
 			Log.e(TAG, "onAction but mView is null, event=" + event);
 			return false;

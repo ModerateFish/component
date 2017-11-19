@@ -27,7 +27,7 @@ public class ${NAME1} implements IComponentView<${NAME1}.IPresenter, ${NAME1}.IV
 	}
 
 	@Override
-	public void setPresenter(@Nullable IPresenter iPresenter) {
+	public final void setPresenter(@Nullable IPresenter iPresenter) {
 		mPresenter = iPresenter;
 	}
 		

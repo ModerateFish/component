@@ -31,7 +31,7 @@ public class ${NAME1} extends BaseBottomPanel<LinearLayout, RelativeLayout>
 	}
 
 	@Override
-	protected final int getLayoutResId() {
+	protected int getLayoutResId() {
 		return 0; // [TODO-COMPONENT replace to correct LayoutRes]
 	}
 

@@ -16,11 +16,10 @@ ${IMPORT}
  * @module [TODO-COMPONENT add module]
  */
 public class ${NAME1} extends ComponentPresenter<${NAME2}> {
-    private static final String TAG = "${NAME1}";
 
 	@Override
 	protected final String getTAG() {
-		return TAG;
+		return "${NAME1}";
 	}
 
 	public ${NAME1}(@NonNull IEventController controller) {
@@ -28,11 +27,7 @@ public class ${NAME1} extends ComponentPresenter<${NAME2}> {
 	}
 
 	@Override
-	public boolean onEvent(int event, IParams params) {
-		switch (event) {
-			default:
-				break;
-		}
+	public final boolean onEvent(int event, IParams params) {
 		return false;
 	}
 }

@@ -1,6 +1,6 @@
 ext {
     versionCode = 2
-    versionName = "1.0.1-snapshot"
+    versionName = "1.0.1-SNAPSHOT"
 
     minSdkVersion = 15
     targetSdkVersion = 25

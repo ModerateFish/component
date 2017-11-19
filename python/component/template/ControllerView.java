@@ -17,11 +17,10 @@ ${IMPORT}
  * @module [TODO-COMPONENT add module]
  */
 public class ${NAME1} extends ControllerView<RelativeLayout, ${NAME2}> {
-    private static final String TAG = "${NAME1}";
 
     @Override
     protected final String getTAG() {
-        return TAG;
+        return "${NAME1}";
     }
 
     public ${NAME1}(@NonNull ViewGroup parentView, @NonNull ${NAME2} controller) {
@@ -35,7 +34,7 @@ public class ${NAME1} extends ControllerView<RelativeLayout, ${NAME2}> {
     }
 
     @Override
-    public boolean onEvent(int event, IParams params) {
+    public final boolean onEvent(int event, IParams params) {
         return false;
     }
 }

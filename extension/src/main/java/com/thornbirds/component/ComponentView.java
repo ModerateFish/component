@@ -21,8 +21,6 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
         return (T) mContentView.findViewById(resId);
     }
 
-    protected abstract String getTAG();
-
     /**
      * Register Component which has presenter with a view, but not IEventView.
      *
@@ -33,6 +31,8 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
         presenter.setView(view);
         mPresenterSet.add(presenter);
     }
+
+    protected abstract String getTAG();
 
     public ComponentView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
         super(controller);
