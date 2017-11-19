@@ -1,12 +1,12 @@
 package com.thornbirds.component;
 
 import android.support.annotation.CallSuper;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.thornbirds.component.presenter.IEventPresenter;
-import com.thornbirds.component.utils.Utils;
 
 /**
  * Created by yangli on 2017/9/16.
@@ -18,18 +18,18 @@ public abstract class ControllerView<VIEW extends View, CONTROLLER extends Compo
     @NonNull
     protected ViewGroup mParentView;
 
-    protected final <T extends View> void addViewAboveAnchor(
-            @NonNull T view,
-            @NonNull ViewGroup.LayoutParams params,
-            View anchorView) {
-        Utils.addViewAboveAnchor((ViewGroup) mContentView, view, params, anchorView);
+    protected abstract String getTAG();
+
+    protected final <T extends View> T $(@IdRes int resId) {
+        return (T) mContentView.findViewById(resId);
     }
 
-    protected final <T extends View> void addViewUnderAnchor(
-            @NonNull T view,
-            @NonNull ViewGroup.LayoutParams params,
-            View anchorView) {
-        Utils.addViewUnderAnchor((ViewGroup) mContentView, view, params, anchorView);
+    protected final void registerAction(int event) {
+        mController.registerObserverForEvent(event, this);
+    }
+
+    protected final void unregisterAction(int event) {
+        mController.unregisterObserverForEvent(event, this);
     }
 
     /**
@@ -42,16 +42,6 @@ public abstract class ControllerView<VIEW extends View, CONTROLLER extends Compo
         presenter.setView(view);
         mPresenterSet.add(presenter);
     }
-
-    protected final void registerAction(int event) {
-        mController.registerObserverForEvent(event, this);
-    }
-
-    protected final void unregisterAction(int event) {
-        mController.unregisterObserverForEvent(event, this);
-    }
-
-    protected abstract String getTAG();
 
     public ControllerView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
         super(controller);
