@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Basic definition of Component Controller for Android platform.
  *
- * Created by yangli on 2017/5/21.
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class ComponentController extends EventController {
     protected final String TAG = getTAG();

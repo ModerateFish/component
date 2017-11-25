@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import com.thornbirds.component.presenter.IEventPresenter;
 
 /**
- * Created by yangli on 2017/9/16.
+ * Basic definition of Controller View for Android platform.
+ *
+ * @author YangLi yanglijd@gmail.com
  */
-public abstract class ControllerView<VIEW extends View, CONTROLLER extends ComponentController>
+public abstract class ControllerView<VIEW extends View, CONTROLLER extends EventController>
         extends CompoundView<VIEW, CONTROLLER> implements IEventObserver {
     protected final String TAG = getTAG();
 

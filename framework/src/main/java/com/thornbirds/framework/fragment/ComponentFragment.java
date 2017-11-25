@@ -4,7 +4,9 @@ import android.app.Fragment;
 import android.view.View;
 
 /**
- * Created by yangli on 2017/9/7.
+ * Basic definition of Component Activity for Android platform.
+ *
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class ComponentFragment extends Fragment {
     protected final String TAG = getTAG();

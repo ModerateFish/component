@@ -11,12 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yangli on 2017/4/24.
+ * This class extends from {@link RecyclerView.Adapter}, working with a ITEM, a HOLDER and a LISTENER.
+ * <p>
+ * ITEM defines the type of the Adapter's item.
+ * <p>
+ * HOLDER is a subclass of {@link ClickItemAdapter.BaseHolder}, whose super is {@link RecyclerView.ViewHolder}.
+ * <p>
+ * LISTENER defines listener used when the item is clicked.
  *
- * @module 列表显示适配器
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.BaseHolder, LISTENER>
         extends RecyclerView.Adapter<HOLDER> {
+
+    protected static final int ITEM_TYPE_FOOTER = -2;
+    protected static final int ITEM_TYPE_HEADER = -1;
+    protected static final int ITEM_TYPE_NORMAL = 0;
+
     protected LayoutInflater mInflater;
     protected List<ITEM> mItems = new ArrayList<>(0);
     protected LISTENER mListener;

@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import com.thornbirds.component.presenter.IEventPresenter;
 
 /**
- * Created by yangli on 2017/5/21.
+ * Basic definition of Component View for Android platform.
+ *
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class ComponentView<VIEW extends View, CONTROLLER extends ComponentController>
         extends CompoundView<VIEW, CONTROLLER> {

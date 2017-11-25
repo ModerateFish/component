@@ -6,7 +6,7 @@ import android.os.Environment;
 import java.io.File;
 
 /**
- * Created by yangli on 2017/9/9.
+ * @author YangLi yanglijd@gmail.com
  */
 public class PreferenceUtil {
 }

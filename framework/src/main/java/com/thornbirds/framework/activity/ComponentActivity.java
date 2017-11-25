@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
- * Created by yangli on 2017/9/16.
+ * Basic definition of Component Activity for Android platform.
+ *
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class ComponentActivity extends AppCompatActivity {
     protected final String TAG = getTAG();

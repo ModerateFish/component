@@ -9,6 +9,8 @@ import java.lang.ref.Reference;
 
 /**
  * Created by yangli on 2017/11/16.
+ *
+ * @author YangLi yanglijd@gmail.com
  */
 public class Utils {
 

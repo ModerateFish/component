@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import static android.view.View.NO_ID;
 
 /**
- * Created by yangli on 2017/3/11.
+ * This class defines a helper for choosing one item from several view.
  *
- * @module 多选一辅助器
+ * @author YangLi yanglijd@gmail.com
  */
 public class SingleChooser implements View.OnClickListener {
     private static final String TAG = "SingleChooser";
