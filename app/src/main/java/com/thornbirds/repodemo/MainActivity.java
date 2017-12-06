@@ -2,10 +2,15 @@ package com.thornbirds.repodemo;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +24,23 @@ public class MainActivity extends ComponentActivity {
     private Fragment mAddFragment2;
     private Fragment mReplaceFragment1;
     private Fragment mReplaceFragment2;
+
+    private MyService.MyServiceImpl mMyService;
+
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mMyService = (MyService.MyServiceImpl) service;
+            Log.d(TAG, "onServiceDisconnected mMyService");
+            mMyService.print("log onServiceConnected");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mMyService = null;
+            Log.d(TAG, "onServiceDisconnected mMyService");
+        }
+    };
 
     @Override
     protected final String getTAG() {
@@ -74,6 +96,37 @@ public class MainActivity extends ComponentActivity {
         });
 
         mPersistFragment = getFragmentManager().findFragmentById(R.id.test_fragment);
+
+        final Intent intent = new Intent(this, MyService.class);
+        bindService(intent, mServiceConnection, BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume mMyService");
+        if (mMyService != null) {
+            mMyService.print("log onResume");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop mMyService");
+        if (mMyService != null) {
+            mMyService.print("log onStop");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy mMyService");
+        if (mMyService != null) {
+            mMyService.print("log onDestroy");
+        }
+        unbindService(mServiceConnection);
     }
 
     @Override

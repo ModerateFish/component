@@ -3,16 +3,19 @@
 
 import os
 
+# 帮助信息
 def usage_helper():
-    """Create a Presenter, which has no View, and no need to refresh UI.
+    """    Create a subclass of ControllerView, which represents a page, and manages all the component
+    of this page.
     Command:
         python [-m] create_controller_view -n component_name
     For more usages, try following command:
         python [-m] create_controller_view -h
     """
-    print "Usage Guard for " + __name__ + '.py'
+    print "Usage Guard for " + __name__ + '.py:'
     print usage_helper.__doc__
 
+# 具体实现
 if __name__ == "__main__":
     from base.creator_base import *
     from base.utils import *

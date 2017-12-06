@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">framework</string>
     <string name="loading_tips_loading">loading</string>
     <string name="loading_tips_done">done</string>
     <string name="loading_tips_failed">failed</string>

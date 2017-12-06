@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">framework</string>
     <string name="loading_tips_loading">正在加載...</string>
     <string name="loading_tips_done">加載完成</string>
     <string name="loading_tips_failed">加載失敗</string>
