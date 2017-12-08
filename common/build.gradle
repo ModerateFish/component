@@ -1,5 +1,8 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+ext {
+    ARTIFACT_ID = 'component'
+}
+
+apply from: '../build_java_library.gradle'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -10,12 +13,6 @@ dependencies {
 
     sourceCompatibility = "1.7"
     targetCompatibility = "1.7"
-}
-
-ext {
-    GROUP_ID = rootProject.ext.mvnGroudID
-    ARTIFACT_ID = 'component'
-    VERSION = rootProject.ext.versionName
 }
 
 def siteUrl = 'https://github.com/ModerateFish/component'         // project homepage
@@ -39,9 +36,9 @@ install {
             }
             developers {
                 developer {
-                    id 'moderatefish'                             // your user id (you can write your nickname)
-                    name 'yangli'                                 // your user name
-                    email 'yanglijd@gmail.com'                    // your email
+                    id 'moderatefish'          // your user id (you can write your nickname)
+                    name 'yangli'              // your user name
+                    email 'yanglijd@gmail.com' // your email
                 }
             }
             scm {
@@ -49,47 +46,6 @@ install {
                 developerConnection gitUrl
                 url siteUrl
             }
-        }
-    }
-}
-
-javadoc {
-    options {
-        encoding "UTF-8"
-        charSet 'UTF-8'
-        author true
-        version true
-        links "http://docs.oracle.com/javase/7/docs/api"
-        title "swipeJavaDoc"
-    }
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from 'build/docs/javadoc'
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-artifacts {
-    archives jar
-    archives javadocJar
-    archives sourcesJar
-}
-
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-uploadArchives {
-    repositories.mavenDeployer {
-        def deployPath = file(properties.getProperty('mvn.deployPath'))
-        repository(url: "file://${deployPath.absolutePath}")
-        pom.project {
-            groupId project.GROUP_ID
-            artifactId project.ARTIFACT_ID
-            version project.VERSION
         }
     }
 }

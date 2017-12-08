@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+        title "swipeJavaDoc"
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+ext {
+    GROUP_ID = rootProject.ext.mvnGroudID
+    VERSION = rootProject.ext.versionName
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(properties.getProperty('mvn.deployPath'))
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            groupId project.GROUP_ID
+            artifactId project.ARTIFACT_ID
+            version project.VERSION
+        }
+    }
+}.dependsOn(build)
