@@ -8,12 +8,13 @@ import com.thornbirds.component.IEventController;
  * @author YangLi yanglijd@gmail.com
  * @see EventPresenter
  */
-public abstract class ComponentPresenter<VIEW> extends EventPresenter<VIEW, IEventController> {
+public abstract class ComponentPresenter<VIEW, CONTROLLER extends IEventController>
+        extends EventPresenter<VIEW, CONTROLLER> {
     protected final String TAG = getTAG();
 
     protected abstract String getTAG();
 
-    public ComponentPresenter(IEventController controller) {
+    public ComponentPresenter(CONTROLLER controller) {
         super(controller);
     }
 
@@ -28,5 +29,4 @@ public abstract class ComponentPresenter<VIEW> extends EventPresenter<VIEW, IEve
     @Override
     public void destroy() {
     }
-
 }
