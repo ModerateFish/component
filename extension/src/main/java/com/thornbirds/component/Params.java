@@ -35,4 +35,15 @@ public class Params implements IParams {
         }
         return null;
     }
+
+    public static Params from(Object... values) {
+        if (values != null && values.length > 0) {
+            final Params params = new Params();
+            for (Object elem : values) {
+                params.putItem(elem);
+            }
+            return params;
+        }
+        return null;
+    }
 }
