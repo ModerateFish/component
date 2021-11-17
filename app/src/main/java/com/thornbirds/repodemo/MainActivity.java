@@ -1,20 +1,21 @@
 package com.thornbirds.repodemo;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.thornbirds.framework.activity.ComponentActivity;
 
 public class MainActivity extends ComponentActivity {
@@ -62,7 +63,7 @@ public class MainActivity extends ComponentActivity {
                         .setAction("Action", null).show();
 //                Intent intent = new Intent(MainActivity.this, com.thornbirds.framework.MainActivity.class);
 //                startActivity(intent);
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 if (mAddFragment1 == null) {
                     Fragment fragment = new TestFragment();
                     Bundle bundle = new Bundle();
@@ -95,7 +96,7 @@ public class MainActivity extends ComponentActivity {
             }
         });
 
-        mPersistFragment = getFragmentManager().findFragmentById(R.id.test_fragment);
+        mPersistFragment = getSupportFragmentManager().findFragmentById(R.id.test_fragment);
 
         final Intent intent = new Intent(this, MyService.class);
         bindService(intent, mServiceConnection, BIND_AUTO_CREATE);

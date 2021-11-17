@@ -1,11 +1,12 @@
 package com.thornbirds.framework.adapter;
 
 import android.content.res.Resources;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.IdRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
     protected static final int ITEM_TYPE_HEADER = -1;
     protected static final int ITEM_TYPE_NORMAL = 0;
 
+    protected final List<ITEM> mItems = new ArrayList<>(0);
     protected LayoutInflater mInflater;
-    protected List<ITEM> mItems = new ArrayList<>(0);
     protected LISTENER mListener;
 
     public ClickItemAdapter() {

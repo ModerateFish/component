@@ -1,9 +1,9 @@
 ext {
-    versionCode = 2
-    versionName = "1.0.2-SNAPSHOT"
+    versionCode = 1100
+    versionName = "1.1.0-SNAPSHOT"
 
     minSdkVersion = 15
-    targetSdkVersion = 25
+    targetSdkVersion = 28
 
     mvnGroudID = "com.thornbirds"
 }

@@ -1,11 +1,6 @@
 package com.thornbirds.widget;
 
 import android.content.Context;
-import android.support.annotation.FloatRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -14,7 +9,13 @@ import android.view.ViewConfiguration;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
-import static android.support.v4.widget.ViewDragHelper.INVALID_POINTER;
+import androidx.annotation.FloatRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewCompat;
+
+import static androidx.customview.widget.ViewDragHelper.INVALID_POINTER;
 
 /**
  * This class implements a layout, which can delay the scroll of its content.

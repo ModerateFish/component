@@ -1,6 +1,6 @@
 package ${PACKAGE};
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.thornbirds.component.IEventController;

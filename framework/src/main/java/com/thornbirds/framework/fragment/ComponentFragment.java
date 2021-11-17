@@ -1,7 +1,8 @@
 package com.thornbirds.framework.fragment;
 
-import android.app.Fragment;
 import android.view.View;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Basic definition of Component Activity for Android platform.

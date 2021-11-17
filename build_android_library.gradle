@@ -2,15 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -68,3 +66,46 @@ uploadArchives {
         }
     }
 }.dependsOn(build)
+
+//afterEvaluate {
+//    // 解决javadoc找不到依赖库中的类
+//    javadoc.classpath += files(android.libraryVariants.collect { variant ->
+//        variant.getJavaCompileProvider().get().classpath.files
+//    })
+//}
+
+
+//def siteUrl = 'https://github.com/ModerateFish/component'         // project homepage
+//def gitUrl = 'https://github.com/ModerateFish/component.git'      // project git url
+//def issueUrl = 'https://github.com/ModerateFish/component/issues' // project issue url
+//
+//// generate javadoc and jar
+//install {
+//    repositories.mavenInstaller {
+//        // generates POM.xml with proper parameters
+//        pom.project {
+//            packaging 'jar'
+//            name 'Component Library'                              // project title
+//            url siteUrl
+//            // Set your license
+//            licenses {
+//                license {
+//                    name 'The Apache Software License, Version 2.0'
+//                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                }
+//            }
+//            developers {
+//                developer {
+//                    id 'moderatefish'          // your user id (you can write your nickname)
+//                    name 'biglee'              // your user name
+//                    email 'yanglijd@gmail.com' // your email
+//                }
+//            }
+//            scm {
+//                connection gitUrl
+//                developerConnection gitUrl
+//                url siteUrl
+//            }
+//        }
+//    }
+//}

@@ -1,7 +1,8 @@
 package com.thornbirds.framework.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Basic definition of Component Activity for Android platform.
