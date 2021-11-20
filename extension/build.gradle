@@ -2,6 +2,7 @@ ext {
     ARTIFACT_ID = 'componentAndroid'
 }
 
+apply from: '../config.gradle'
 apply from: '../build_android_library.gradle'
 
 android {

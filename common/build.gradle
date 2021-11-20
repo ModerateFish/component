@@ -2,6 +2,7 @@ ext {
     ARTIFACT_ID = 'component'
 }
 
+apply from: '../config.gradle'
 apply from: '../build_java_library.gradle'
 
 dependencies {

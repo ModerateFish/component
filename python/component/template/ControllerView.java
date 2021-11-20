@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.thornbirds.component.IParams;
-import com.thornbirds.framework.component.ControllerView;
+import com.thornbirds.frameworkext.component.ControllerView;
 
 ${IMPORT}
 

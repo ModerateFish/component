@@ -5,10 +5,10 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
     }
 
     buildTypes {
@@ -49,23 +49,34 @@ artifacts {
 }
 
 ext {
-    GROUP_ID = rootProject.ext.mvnGroudID
-    VERSION = rootProject.ext.versionName
+    GROUP_ID = project.ext.mvnGroudID
+    VERSION = project.ext.versionName
 }
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-uploadArchives {
-    repositories.mavenDeployer {
-        def deployPath = file(properties.getProperty('mvn.deployPath'))
-        repository(url: "file://${deployPath.absolutePath}")
-        pom.project {
-            groupId project.GROUP_ID
-            artifactId project.ARTIFACT_ID
-            version project.VERSION
+def deployPath = properties.getProperty('mvn.deployPath')
+if (deployPath != null) {
+    uploadArchives {
+        repositories.mavenDeployer {
+            repository(url: "file://$deployPath}")
+            pom.project {
+                groupId project.GROUP_ID
+                artifactId project.ARTIFACT_ID
+                version project.VERSION
+            }
+            pom.whenConfigured { pom ->
+                pom.dependencies.forEach { dep ->
+                    // 处理生成的pom中project方式的依赖group_id和version不对
+                    if (dep.getVersion() == "unspecified") {
+                        dep.setGroupId(project.GROUP_ID)
+                        dep.setVersion(project.VERSION)
+                    }
+                }
+            }
         }
-    }
-}.dependsOn(build)
+    }.dependsOn(build)
+}
 
 //afterEvaluate {
 //    // 解决javadoc找不到依赖库中的类
