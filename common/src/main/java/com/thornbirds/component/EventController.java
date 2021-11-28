@@ -20,7 +20,7 @@ public abstract class EventController implements IEventController {
     protected abstract void LogE(String msg);
 
     @Override
-    public void registerObserverForEvent(int event, IEventObserver observer) {
+    public final void registerObserverForEvent(int event, IEventObserver observer) {
         if (observer == null) {
             LogE("registerObserverForEvent but action is null for event=" + event);
             return;
@@ -34,7 +34,7 @@ public abstract class EventController implements IEventController {
     }
 
     @Override
-    public void unregisterObserverForEvent(int event, IEventObserver observer) {
+    public final void unregisterObserverForEvent(int event, IEventObserver observer) {
         if (observer == null) {
             return;
         }
@@ -45,7 +45,7 @@ public abstract class EventController implements IEventController {
     }
 
     @Override
-    public void unregisterObserver(IEventObserver observer) {
+    public final void unregisterObserver(IEventObserver observer) {
         if (observer == null) {
             return;
         }
@@ -55,13 +55,13 @@ public abstract class EventController implements IEventController {
     }
 
     @Override
-    public boolean postEvent(int event) {
+    public final boolean postEvent(int event) {
         return postEvent(event, null);
     }
 
     @Override
-    public boolean postEvent(int event, IParams params) {
-        Set<IEventObserver> actionSet = mEventActionMap.get(event);
+    public final boolean postEvent(int event, IParams params) {
+        final Set<IEventObserver> actionSet = mEventActionMap.get(event);
         if (actionSet == null || actionSet.isEmpty()) {
             LogE("no action registered for source " + event);
             return false;
@@ -73,7 +73,6 @@ public abstract class EventController implements IEventController {
         return result;
     }
 
-    @Override
     public void release() {
         mEventActionMap.clear();
     }

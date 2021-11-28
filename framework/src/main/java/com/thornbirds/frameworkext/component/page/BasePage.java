@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import com.thornbirds.component.ControllerView;
 
 /**
- * Created by yangli on 2019/3/20.
- *
- * @mail yanglijd@gmail.com
+ * @author YangLi yanglijd@gmail.com
  */
 public abstract class BasePage<VIEW extends View, CONTROLLER extends BasePageController>
         extends ControllerView<VIEW, CONTROLLER> {
@@ -43,6 +41,9 @@ public abstract class BasePage<VIEW extends View, CONTROLLER extends BasePageCon
     @Override
     public void startView() {
         super.startView();
+        if (mContentView.getParent() == null) {
+            mParentView.addView(mContentView);
+        }
         mContentView.setVisibility(View.VISIBLE);
     }
 

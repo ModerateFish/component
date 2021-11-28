@@ -1,12 +1,10 @@
 package com.thornbirds.frameworkext.component.page;
 
 import com.thornbirds.component.Params;
-import com.thornbirds.frameworkext.component.IPageParams;
+import com.thornbirds.frameworkext.component.route.IPageParams;
 
 /**
- * Created by yangli on 2019/5/4.
- *
- * @mail yanglijd@gmail.com
+ * @author YangLi yanglijd@gmail.com
  */
 public class PageParams extends Params implements IPageParams {
     @Override

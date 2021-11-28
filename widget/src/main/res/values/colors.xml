@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--color resources for Standard-->
+    <color name="color_red">#FF0000</color>
+    <color name="color_orange">#FFA500</color>
+    <color name="color_yellow">#FFFF00</color>
+    <color name="color_green">#00FF00</color>
+    <color name="color_cyan">#00FFFF</color>
+    <color name="color_blue">#0000FF</color>
+    <color name="color_purple">#800080</color>
+    <color name="color_transparent">#00000000</color>
+
+    <!--color resources for Black-->
+    <color name="color_black">#000000</color>
+    <color name="color_black_trans_90">#E5000000</color>
+    <color name="color_black_trans_80">#CC000000</color>
+    <color name="color_black_trans_70">#B2000000</color>
+    <color name="color_black_trans_60">#99000000</color>
+    <color name="color_black_trans_50">#7F000000</color>
+    <color name="color_black_trans_40">#66000000</color>
+    <color name="color_black_trans_30">#4C000000</color>
+    <color name="color_black_trans_20">#33000000</color>
+    <color name="color_black_trans_10">#19000000</color>
+
+    <!--color resources for White-->
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_white_trans_90">#E5FFFFFF</color>
+    <color name="color_white_trans_80">#CCFFFFFF</color>
+    <color name="color_white_trans_70">#B2FFFFFF</color>
+    <color name="color_white_trans_60">#99FFFFFF</color>
+    <color name="color_white_trans_50">#7FFFFFFF</color>
+    <color name="color_white_trans_40">#66FFFFFF</color>
+    <color name="color_white_trans_30">#4CFFFFFF</color>
+    <color name="color_white_trans_20">#33FFFFFF</color>
+    <color name="color_white_trans_10">#19FFFFFF</color>
+</resources>

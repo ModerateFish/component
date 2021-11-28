@@ -55,5 +55,4 @@ public class Utils {
             container.addView(view, 0, params);
         }
     }
-
 }

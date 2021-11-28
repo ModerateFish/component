@@ -1,34 +1,36 @@
-package com.thornbirds.frameworkext.component;
+package com.thornbirds.frameworkext.component.route;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.thornbirds.component.IEventObserver;
-import com.thornbirds.component.IParams;
+import com.thornbirds.component.ComponentController;
+import com.thornbirds.component.IEventController;
 
 /**
  * Created by yangli on 2017/11/19.
  */
-public abstract class ComponentController extends com.thornbirds.component.ComponentController {
+public abstract class RouteComponentController<T extends IRouter> extends ComponentController {
 
-    private static final boolean DEBUG = true;
+    public static final int STATE_IDLE = 0;
+    public static final int STATE_CREATED = 1;
+    public static final int STATE_STARTED = 2;
+    public static final int STATE_STOPPED = 3;
+    public static final int STATE_DESTROYED = 4;
 
-    protected static final int STATE_IDLE = 0;
-    protected static final int STATE_CREATED = 1;
-    protected static final int STATE_STARTED = 2;
-    protected static final int STATE_STOPPED = 3;
-    protected static final int STATE_DESTROYED = 4;
+    @Nullable
+    public abstract T getRouter();
+
+    @Nullable
+    public abstract T getParentRouter();
+
+    public abstract boolean exitRouter();
 
     private int mState = STATE_IDLE;
 
-    protected final int getState() {
+    public final int getState() {
         return mState;
     }
-
-    @Nullable
-    public abstract IRouter getRouter();
 
     protected abstract void onCreate();
 
@@ -91,11 +93,6 @@ public abstract class ComponentController extends com.thornbirds.component.Compo
         onDestroy();
     }
 
-    @Override
-    public final void release() {
-        performDestroy();
-    }
-
     public final boolean performBackPressed() {
         if (mState == STATE_DESTROYED) {
             return false;
@@ -106,40 +103,7 @@ public abstract class ComponentController extends com.thornbirds.component.Compo
         return onBackPressed();
     }
 
-    protected abstract class Action implements IEventObserver {
-
-        protected Action() {
-        }
-
-        protected final void registerAction(int event) {
-            registerObserverForEvent(event, this);
-        }
-
-        protected final void unregisterAction(int event) {
-            unregisterObserverForEvent(event, this);
-        }
-
-        protected final void register() {
-            onRegister();
-        }
-
-        protected final void unregister() {
-            unregisterObserver(this);
-        }
-
-        protected abstract void onRegister();
-
-        @Override
-        public abstract boolean onEvent(int event, IParams params);
-    }
-
-    public interface IRouter {
-        boolean startPage(@NonNull String route);
-
-        boolean startPage(@NonNull String route, @Nullable IPageParams params);
-
-        boolean popPage();
-
-        boolean popPage(@NonNull ComponentController controller);
+    public RouteComponentController(@Nullable IEventController eventController) {
+        super(eventController);
     }
 }

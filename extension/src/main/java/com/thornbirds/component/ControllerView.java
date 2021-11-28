@@ -14,7 +14,7 @@ import com.thornbirds.component.presenter.IEventPresenter;
  *
  * @author YangLi yanglijd@gmail.com
  */
-public abstract class ControllerView<VIEW extends View, CONTROLLER extends EventController>
+public abstract class ControllerView<VIEW extends View, CONTROLLER extends IEventController>
         extends CompoundView<VIEW, CONTROLLER> implements IEventObserver {
     protected final String TAG = getTAG();
 
@@ -23,7 +23,7 @@ public abstract class ControllerView<VIEW extends View, CONTROLLER extends Event
 
     protected abstract String getTAG();
 
-    protected final <T extends View> T $(@IdRes int resId) {
+    protected final <T extends View> T findViewById(@IdRes int resId) {
         return (T) mContentView.findViewById(resId);
     }
 

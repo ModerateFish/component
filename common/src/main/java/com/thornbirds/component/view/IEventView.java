@@ -8,7 +8,7 @@ import com.thornbirds.component.presenter.IEventPresenter;
  * <p>
  * PRESENTER is a subclass of {@link IEventPresenter}, and is the Presenter of this Component View.
  * <p>
- * VIEW is a Proxy of this Component View. Usually, VIEW defines a interface for the Presenter to
+ * VIEW is a Proxy of this Component View. Usually, VIEW defines an interface for the Presenter to
  * interact with the real view.
  * <p>
  * @author YangLi yanglijd@gmail.com

@@ -1,4 +1,4 @@
-package com.thornbirds.frameworkext.component;
+package com.thornbirds.frameworkext.component.route;
 
 import androidx.annotation.NonNull;
 
