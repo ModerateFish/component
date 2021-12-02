@@ -41,7 +41,7 @@ public abstract class ControllerView<VIEW extends View, CONTROLLER extends IEven
      * @param view      target view
      * @param presenter target presenter
      */
-    protected final void registerHybridComponent(IEventPresenter presenter, View view) {
+    protected final void registerComponent(IEventPresenter presenter, View view) {
         presenter.setView(view);
         mPresenterSet.add(presenter);
     }

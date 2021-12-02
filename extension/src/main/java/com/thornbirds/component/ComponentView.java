@@ -20,7 +20,9 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
     @NonNull
     protected ViewGroup mParentView;
 
-    protected final <T extends View> T $(@IdRes int resId) {
+    protected abstract String getTAG();
+
+    protected final <T extends View> T findViewById(@IdRes int resId) {
         return (T) mContentView.findViewById(resId);
     }
 
@@ -30,12 +32,10 @@ public abstract class ComponentView<VIEW extends View, CONTROLLER extends Compon
      * @param view      target view
      * @param presenter target presenter
      */
-    protected final void registerHybridComponent(IEventPresenter presenter, View view) {
+    protected final void registerComponent(IEventPresenter presenter, View view) {
         presenter.setView(view);
         mPresenterSet.add(presenter);
     }
-
-    protected abstract String getTAG();
 
     public ComponentView(@NonNull ViewGroup parentView, @NonNull CONTROLLER controller) {
         super(controller);

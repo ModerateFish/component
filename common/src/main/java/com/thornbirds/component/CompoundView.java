@@ -31,7 +31,7 @@ public abstract class CompoundView<VIEW, CONTROLLER extends IEventController> {
      * @param view      target view
      * @param presenter target presenter
      */
-    protected final void registerComponent(IEventView view, IEventPresenter presenter) {
+    protected final void registerComponent(IEventPresenter presenter, IEventView view) {
         presenter.setView(view.getViewProxy());
         view.setPresenter(presenter);
         mPresenterSet.add(presenter);

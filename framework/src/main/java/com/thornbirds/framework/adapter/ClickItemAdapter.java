@@ -48,7 +48,7 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
     }
 
     @Override
-    public HOLDER onCreateViewHolder(ViewGroup parent, int viewType) {
+    public final HOLDER onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mInflater == null) {
             mInflater = LayoutInflater.from(parent.getContext());
         }
@@ -98,7 +98,7 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
 
     public static abstract class BaseHolder<ITEM, LISTENER> extends RecyclerView.ViewHolder {
 
-        protected final <T extends View> T $(@IdRes int resId) {
+        protected final <T extends View> T findViewById(@IdRes int resId) {
             return (T) itemView.findViewById(resId);
         }
 
@@ -112,8 +112,7 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
 
         public BaseHolder(View view, int width, int height) {
             this(view);
-            RecyclerView.LayoutParams params =
-                    new RecyclerView.LayoutParams(width, height);
+            RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(width, height);
             itemView.setLayoutParams(params);
         }
 

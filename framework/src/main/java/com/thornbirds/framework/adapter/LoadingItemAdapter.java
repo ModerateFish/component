@@ -93,11 +93,11 @@ public abstract class LoadingItemAdapter<ITEM, HOLDER extends ClickItemAdapter.B
     }
 
     protected static class FooterHolder extends ClickItemAdapter.BaseHolder<FooterItem, Object> {
-        private TextView mStatusView;
+        private final TextView mStatusView;
 
         public FooterHolder(View view) {
             super(view);
-            mStatusView = $(R.id.status_view);
+            mStatusView = findViewById(R.id.status_view);
         }
 
         @Override

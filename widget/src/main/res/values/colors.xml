@@ -24,6 +24,7 @@
 
     <!--color resources for White-->
     <color name="color_white">#FFFFFF</color>
+    <color name="color_white_trans_95">#F2FFFFFF</color>
     <color name="color_white_trans_90">#E5FFFFFF</color>
     <color name="color_white_trans_80">#CCFFFFFF</color>
     <color name="color_white_trans_70">#B2FFFFFF</color>
@@ -33,4 +34,16 @@
     <color name="color_white_trans_30">#4CFFFFFF</color>
     <color name="color_white_trans_20">#33FFFFFF</color>
     <color name="color_white_trans_10">#19FFFFFF</color>
+
+    <!--color resources for Grey-->
+    <color name="color_grey_5">#F2F2F2</color>
+    <color name="color_grey_10">#E5E5E5</color>
+    <color name="color_grey_20">#CCCCCC</color>
+    <color name="color_grey_30">#B2B2B2</color>
+    <color name="color_grey_40">#999999</color>
+    <color name="color_grey_50">#7F7F7F</color>
+    <color name="color_grey_60">#666666</color>
+    <color name="color_grey_70">#4C4C4C</color>
+    <color name="color_grey_80">#333333</color>
+    <color name="color_grey_90">#191919</color>
 </resources>
