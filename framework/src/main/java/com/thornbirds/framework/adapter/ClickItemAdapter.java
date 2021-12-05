@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.IdRes;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -97,6 +98,8 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
     }
 
     public static abstract class BaseHolder<ITEM, LISTENER> extends RecyclerView.ViewHolder {
+        protected ITEM mData;
+        protected LISTENER mListener;
 
         protected final <T extends View> T findViewById(@IdRes int resId) {
             return (T) itemView.findViewById(resId);
@@ -116,7 +119,13 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
             itemView.setLayoutParams(params);
         }
 
-        public abstract void bindView(ITEM item, LISTENER listener);
+        public final void bindView(ITEM item, @Nullable LISTENER listener) {
+            mData = item;
+            mListener = listener;
+            onBindView(item);
+        }
+
+        public abstract void onBindView(ITEM item);
     }
 
 }

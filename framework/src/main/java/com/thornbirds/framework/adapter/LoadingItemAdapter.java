@@ -101,7 +101,7 @@ public abstract class LoadingItemAdapter<ITEM, HOLDER extends ClickItemAdapter.B
         }
 
         @Override
-        public void bindView(FooterItem item, Object listener) {
+        public void onBindView(FooterItem item) {
             itemView.setVisibility(View.VISIBLE);
             switch (item.state) {
                 case FooterItem.STATE_LOADING:
