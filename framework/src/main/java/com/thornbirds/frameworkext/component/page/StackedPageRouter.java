@@ -83,7 +83,7 @@ final class StackedPageRouter extends PageRouter<IPageEntry, IPageCreator<IPageE
 
     @Override
     protected final boolean doPopPage(@Nullable RouteComponentController page) {
-        if (page != null && top() != null && top().matchController(page)) {
+        if (page != null && top() != null && !top().matchController(page)) {
             return false;
         }
         if (size() <= 1) {
