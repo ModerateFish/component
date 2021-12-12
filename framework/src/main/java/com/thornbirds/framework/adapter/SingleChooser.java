@@ -1,12 +1,12 @@
 package com.thornbirds.framework.adapter;
 
+import static android.view.View.NO_ID;
+
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-
-import static android.view.View.NO_ID;
 
 /**
  * This class defines a helper for choosing one item from several view.
@@ -70,8 +70,7 @@ public class SingleChooser implements View.OnClickListener {
                 continue;
             }
             if (id == selectedId) {
-                mSelectedView = view;
-                mSelectedView.setSelected(true);
+                setSelection(view);
             }
             view.setOnClickListener(this);
         }

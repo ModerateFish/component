@@ -43,6 +43,18 @@ public abstract class ClickItemAdapter<ITEM, HOLDER extends ClickItemAdapter.Bas
         return mItems.isEmpty();
     }
 
+    public final int getSize() {
+        return mItems.size();
+    }
+
+    public final int findDataPosition(ITEM item) {
+        return mItems.indexOf(item);
+    }
+
+    public final ITEM getData(int position) {
+        return mItems.get(position);
+    }
+
     @Override
     public int getItemCount() {
         return mItems.size();

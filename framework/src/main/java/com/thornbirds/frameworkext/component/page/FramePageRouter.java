@@ -66,12 +66,12 @@ final class FramePageRouter extends PageRouter<IPageEntry, IPageCreator<IPageEnt
             }
             topEntry.performStop();
         }
+        mCurrPage = entry;
+        mPageMap.put(route, entry);
         entry.performCreate(mRouterController);
         if (state == STATE_STARTED) {
             entry.performStart();
         }
-        mCurrPage = entry;
-        mPageMap.put(route, entry);
         return true;
     }
 

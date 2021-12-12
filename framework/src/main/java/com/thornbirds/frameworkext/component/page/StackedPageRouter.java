@@ -42,6 +42,10 @@ final class StackedPageRouter extends PageRouter<IPageEntry, IPageCreator<IPageE
         return mPageStack.isEmpty() ? null : mPageStack.removeFirst();
     }
 
+    private void push(IPageEntry entry) {
+        mPageStack.addFirst(entry);
+    }
+
     @Override
     protected final boolean doStartPage(@NonNull String route, @Nullable IPageParams params) {
         final IPageCreator creator = resolveRoute(route);
@@ -61,23 +65,23 @@ final class StackedPageRouter extends PageRouter<IPageEntry, IPageCreator<IPageE
         return doAddPageInner(entry);
     }
 
-    private boolean doAddPageInner(@NonNull IPageEntry entry) {
+    private boolean doAddPageInner(@NonNull IPageEntry newEntry) {
         final int state = mRouterController.getState();
         if (state == STATE_DESTROYED) {
             return false;
         }
         final IPageEntry topEntry = top();
         if (topEntry != null) {
-            if (topEntry == entry) {
+            if (topEntry == newEntry) {
                 return true;
             }
             topEntry.performStop();
         }
-        entry.performCreate(mRouterController);
+        push(newEntry);
+        newEntry.performCreate(mRouterController);
         if (state == STATE_STARTED) {
-            entry.performStart();
+            newEntry.performStart();
         }
-        mPageStack.push(entry);
         return true;
     }
 
