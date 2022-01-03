@@ -133,6 +133,16 @@ final class StackedPageRouter extends PageRouter<IPageEntry, IPageCreator<IPageE
     @MainThread
     final boolean dispatchBackPress() {
         final IPageEntry entry = top();
-        return entry != null && entry.performBackPress();
+        if (entry == null) {
+            return false;
+        }
+        if (entry.performBackPress()) {
+            return true;
+        }
+        if (size() > 1) {
+            doPopPage(null);
+            return true;
+        }
+        return false;
     }
 }

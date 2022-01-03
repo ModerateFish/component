@@ -1,5 +1,7 @@
 package com.thornbirds.frameworkext.component.page;
 
+import android.text.TextUtils;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -37,7 +39,6 @@ public abstract class BaseActivityController extends RouteComponentController<IP
 
     protected abstract void onSetupRouters();
 
-    @NonNull
     protected abstract String onGetDefaultRoute();
 
     @NonNull
@@ -64,16 +65,16 @@ public abstract class BaseActivityController extends RouteComponentController<IP
     @Override
     protected void onCreate() {
         onSetupRouters();
+        final String defaultRoute = onGetDefaultRoute();
+        if (!TextUtils.isEmpty(defaultRoute)) {
+            mPageRouter.startPage(defaultRoute);
+        }
     }
 
     @CallSuper
     @Override
     protected void onStart() {
         mPageRouter.dispatchStart();
-        if (mPageRouter.isEmpty()) {
-            final String defaultRoute = onGetDefaultRoute();
-            mPageRouter.startPage(defaultRoute);
-        }
     }
 
     @CallSuper
