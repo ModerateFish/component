@@ -4,6 +4,7 @@ ext {
 
     minSdkVersion = 15
     targetSdkVersion = 28
+    compileSdkVersion = 28
 
     mvnGroudID = "com.thornbirds"
 }

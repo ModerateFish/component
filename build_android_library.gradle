@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion project.ext.targetSdkVersion
 
     defaultConfig {
         minSdkVersion project.ext.minSdkVersion
