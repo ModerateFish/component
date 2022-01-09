@@ -1,9 +1,8 @@
 ext {
-    ARTIFACT_ID = 'componentAndroid'
+    ARTIFACT_ID = 'core'
 }
 
 apply from: '../config.gradle'
-apply plugin: 'kotlin-android'
 apply from: '../build_android_library.gradle'
 
 android {
@@ -24,7 +23,4 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     
     implementation project(':common')
-}
-repositories {
-    mavenCentral()
 }

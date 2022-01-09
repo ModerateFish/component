@@ -3,15 +3,21 @@ ext {
 }
 
 apply from: '../config.gradle'
-apply from: '../build_java_library.gradle'
+apply from: '../build_android_library.gradle'
+
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.google.auto:auto-common:0.6'
-    implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.7.0'
-
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_version"
 }

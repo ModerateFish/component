@@ -1,9 +1,8 @@
 ext {
-    ARTIFACT_ID = 'componentAndroidKit'
+    ARTIFACT_ID = 'framework'
 }
 
 apply from: '../config.gradle'
-apply plugin: 'kotlin-android'
 apply from: '../build_android_library.gradle'
 
 android {
@@ -28,7 +27,4 @@ dependencies {
 
     implementation project(':common')
     implementation project(':extension')
-}
-repositories {
-    mavenCentral()
 }
