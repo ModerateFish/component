@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ./gradlew clean && \
-./gradlew :common:uploadArchives && \
-./gradlew :extension:uploadArchives && \
-./gradlew :framework:uploadArchives && \
-./gradlew :widget:uploadArchives
+./gradlew :common:publish && \
+./gradlew :extension:publish && \
+./gradlew :framework:publish && \
+./gradlew :widget:publish
