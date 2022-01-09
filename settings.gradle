@@ -1,1 +1,5 @@
-include ':app', ':common', ':extension', ':framework', ':widget'
+include ':app'
+include ':common'
+include ':extension'
+include ':framework'
+include ':widget'
