@@ -25,7 +25,7 @@ abstract class CompoundView<VIEW, CONTROLLER : IEventController>(
     private val mPresenterSet: MutableList<IEventPresenter<*>> = ArrayList<IEventPresenter<*>>()
 
     protected val ensureContentView: VIEW
-        get() = mContentView ?: throw IllegalStateException("mContentView in null")
+        get() = mContentView ?: throw NullPointerException("mContentView in null")
 
     /**
      * Register Component which has both view and presenter

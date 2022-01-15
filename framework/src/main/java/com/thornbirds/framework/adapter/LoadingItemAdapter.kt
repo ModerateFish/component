@@ -3,6 +3,7 @@ package com.thornbirds.framework.adapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.thornbirds.framework.R
 import com.thornbirds.framework.adapter.ClickItemAdapter.BaseHolder
 
@@ -16,19 +17,29 @@ abstract class LoadingItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LIS
 
     private val mFooterItem = FooterItem()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<*, *> {
-        when (viewType) {
+    override fun getItemCount(): Int {
+        return dataSize + 1
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (dataSize == position) ITEM_TYPE_FOOTER else ITEM_TYPE_NORMAL
+    }
+
+    final override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
             ITEM_TYPE_FOOTER -> {
                 val view = ensureInflater(parent.context).inflate(
                     R.layout.loading_status_item, parent, false
                 )
-                return FooterHolder(view)
+                FooterHolder(view)
+            }
+            else -> {
+                super.onCreateViewHolder(parent, viewType)
             }
         }
-        return super.onCreateViewHolder(parent, viewType)
     }
 
-    override fun onBindViewHolder(holder: BaseHolder<*, *>, position: Int) {
+    final override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FooterHolder) {
             holder.bindView(mFooterItem, null)
         } else {
@@ -36,40 +47,32 @@ abstract class LoadingItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LIS
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (mItems.size == position) ITEM_TYPE_FOOTER else ITEM_TYPE_NORMAL
-    }
-
-    override fun getItemCount(): Int {
-        return mItems.size + 1
-    }
-
-    protected fun updateLoadingState(state: Int) {
+    private fun updateLoadingStateInner(state: Int) {
         if (mFooterItem.state == state) {
             return
         }
         mFooterItem.state = state
-        notifyItemChanged(mItems.size)
+        notifyItemChanged(dataSize)
     }
 
     fun hideLoading() {
-        updateLoadingState(FooterItem.STATE_HIDDEN)
+        updateLoadingStateInner(FooterItem.STATE_HIDDEN)
     }
 
     fun showLoading() {
-        updateLoadingState(FooterItem.STATE_LOADING)
+        updateLoadingStateInner(FooterItem.STATE_LOADING)
     }
 
     fun onLoadingDone(hasMore: Boolean) {
         if (hasMore) {
-            updateLoadingState(FooterItem.STATE_DONE)
+            updateLoadingStateInner(FooterItem.STATE_DONE)
         } else {
-            updateLoadingState(FooterItem.STATE_NO_MORE)
+            updateLoadingStateInner(FooterItem.STATE_NO_MORE)
         }
     }
 
     fun onLoadingFailed() {
-        updateLoadingState(FooterItem.STATE_FAILED)
+        updateLoadingStateInner(FooterItem.STATE_FAILED)
     }
 
     protected class FooterItem {

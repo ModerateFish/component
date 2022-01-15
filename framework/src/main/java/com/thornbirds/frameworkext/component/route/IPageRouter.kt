@@ -12,7 +12,7 @@ interface IPageRouter<T : IRouterController> : IRouter<T>
 interface IPageParams : IParams
 
 interface IPageEntry<T : IRouterController> {
-    fun matchController(controller: T?): Boolean
+    fun matchController(controller: IRouterController): Boolean
     fun performCreate(parentController: T)
     fun performStart()
     fun performStop()

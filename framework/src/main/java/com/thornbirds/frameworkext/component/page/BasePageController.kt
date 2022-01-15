@@ -86,8 +86,8 @@ abstract class BasePageController(
         private val pageParams: IPageParams?
     ) : IPageEntry<BasePageController> {
 
-        override fun matchController(controller: BasePageController?): Boolean {
-            return this.controller === controller
+        override fun matchController(controller: IRouterController): Boolean {
+            return this.controller == controller
         }
 
         override fun performCreate(parentController: BasePageController) {

@@ -22,23 +22,24 @@ import com.thornbirds.framework.adapter.ClickItemAdapter.BaseHolder
  * @author YangLi yanglijd@gmail.com
  */
 abstract class ClickItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LISTENER> :
-    RecyclerView.Adapter<BaseHolder<*, *>>() {
+    RecyclerView.Adapter<ViewHolder>() {
 
     protected val mItems = mutableListOf<ITEM>()
     private var mInflater: LayoutInflater? = null
-    protected var mListener: LISTENER? = null
+
+    private var mListener: LISTENER? = null
+
+    val isEmpty: Boolean
+        get() = mItems.isEmpty()
+
+    val dataSize: Int
+        get() = mItems.size
 
     protected fun ensureInflater(context: Context): LayoutInflater {
         return mInflater ?: LayoutInflater.from(context).also {
             mInflater = it
         }
     }
-
-    val isEmpty: Boolean
-        get() = mItems.isEmpty()
-
-    val size: Int
-        get() = mItems.size
 
     fun setClickListener(listener: LISTENER?) {
         mListener = listener
@@ -48,8 +49,33 @@ abstract class ClickItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LISTE
         return mItems.indexOf(item)
     }
 
-    fun getData(position: Int): ITEM {
+    fun getItem(position: Int): ITEM {
+        if (position < 0 || position >= dataSize) {
+            throw IndexOutOfBoundsException("dataSize=$dataSize position=$position")
+        }
         return mItems[position]
+    }
+
+    fun setData(items: List<ITEM>?) {
+        mItems.clear()
+        if (items?.isNotEmpty() == true) {
+            mItems.addAll(items)
+        }
+        notifyDataSetChanged()
+    }
+
+    fun addData(items: List<ITEM>?) {
+        if (items?.isNotEmpty() == true) {
+            mItems.addAll(items)
+            notifyDataSetChanged()
+        }
+    }
+
+    fun clearData() {
+        if (mItems.isNotEmpty()) {
+            mItems.clear()
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -58,7 +84,7 @@ abstract class ClickItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LISTE
 
     protected abstract fun doCreateViewHolder(parent: ViewGroup, viewType: Int): HOLDER
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<*, *> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return doCreateViewHolder(parent, viewType)
     }
 
@@ -66,58 +92,23 @@ abstract class ClickItemAdapter<ITEM, HOLDER : BaseHolder<ITEM, LISTENER>, LISTE
         holder.bindView(mItems[position], mListener)
     }
 
-    override fun onBindViewHolder(holder: BaseHolder<*, *>, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         doBindViewHolder(holder as HOLDER, position)
     }
 
-    fun onItemDataUpdated(item: ITEM) {
-        val index = mItems.indexOf(item)
-        if (index != -1) {
-            notifyItemChanged(index)
-        }
-    }
-
-    fun insertItemData(index: Int, item: ITEM) {
-        mItems.add(index, item)
-        notifyItemInserted(index)
-    }
-
-    fun addItemData(items: List<ITEM>?) {
-        if (items?.isNotEmpty() == true) {
-            mItems.addAll(items)
-            notifyDataSetChanged()
-        }
-    }
-
-    fun setItemData(items: List<ITEM>?) {
-        mItems.clear()
-        if (items?.isNotEmpty() == true) {
-            mItems.addAll(items)
-        }
-        notifyDataSetChanged()
-    }
-
-    fun clearData() {
-        mItems.clear()
-        notifyDataSetChanged()
-    }
-
     abstract class BaseHolder<ITEM, LISTENER>(view: View) : ViewHolder(view) {
-        protected var mData: ITEM? = null
+        private var mData: ITEM? = null
         protected var mListener: LISTENER? = null
+            private set
 
         protected val ensureData: ITEM
             get() = mData ?: throw NullPointerException("mData is null")
 
-        protected fun <T : View> findViewById(@IdRes resId: Int): T {
-            return itemView.findViewById(resId)
-        }
-
         protected val resources: Resources
             get() = itemView.resources
 
-        constructor(view: View, width: Int, height: Int) : this(view) {
-            itemView.layoutParams = RecyclerView.LayoutParams(width, height)
+        protected fun <T : View> findViewById(@IdRes resId: Int): T {
+            return itemView.findViewById(resId)
         }
 
         protected abstract fun onBindView(item: ITEM)
