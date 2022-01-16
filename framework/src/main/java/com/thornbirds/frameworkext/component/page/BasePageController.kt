@@ -70,7 +70,7 @@ abstract class BasePageController(
 
     @CallSuper
     override fun onDestroy() {
-        mPage!!.release()
+        mPage?.release()
         mSubPageRouter.dispatchDestroy()
     }
 

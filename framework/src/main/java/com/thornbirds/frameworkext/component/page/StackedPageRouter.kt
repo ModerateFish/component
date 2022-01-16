@@ -63,7 +63,7 @@ internal class StackedPageRouter(
         }
         push(newEntry)
         newEntry.performCreate(mRouterController)
-        if (state == RouteComponentController.STATE_STARTED) {
+        if (state == STATE_STARTED) {
             newEntry.performStart()
         }
         return true
